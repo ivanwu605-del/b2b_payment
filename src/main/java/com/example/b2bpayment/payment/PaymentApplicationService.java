@@ -5,6 +5,7 @@ import com.example.b2bpayment.db.OrderJdbcRepository;
 import com.example.b2bpayment.db.OrderRecord;
 import com.example.b2bpayment.db.PaymentJdbcRepository;
 import com.example.b2bpayment.db.PaymentRecord;
+import com.example.b2bpayment.merchant.MerchantApplicationService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,18 +17,22 @@ public class PaymentApplicationService {
     private final OrderJdbcRepository orderRepository;
     private final PaymentJdbcRepository paymentRepository;
     private final B2bPaymentRatioService ratioService;
+    private final MerchantApplicationService merchantService;
 
     public PaymentApplicationService(
             OrderJdbcRepository orderRepository,
             PaymentJdbcRepository paymentRepository,
-            B2bPaymentRatioService ratioService
+            B2bPaymentRatioService ratioService,
+            MerchantApplicationService merchantService
     ) {
         this.orderRepository = orderRepository;
         this.paymentRepository = paymentRepository;
         this.ratioService = ratioService;
+        this.merchantService = merchantService;
     }
 
     public PaymentRecord createPayment(CreatePaymentRequest request) {
+        merchantService.requireActiveMerchant(request.merchantId());
         OrderRecord order = orderRepository.findByOrderId(request.orderId())
                 .orElseThrow(() -> new OrderNotFoundException(request.orderId()));
         if (!order.merchantId().equals(request.merchantId())) {

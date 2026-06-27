@@ -18,6 +18,20 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
+-- Table structure for t_merchant
+-- ----------------------------
+DROP TABLE IF EXISTS `t_merchant`;
+CREATE TABLE `t_merchant` (
+  `merchant_id` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `merchant_name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_time` datetime(6) NOT NULL,
+  `update_time` datetime(6) NOT NULL,
+  PRIMARY KEY (`merchant_id`),
+  KEY `idx_merchant_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
 -- Table structure for t_order
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
@@ -31,7 +45,8 @@ CREATE TABLE `t_order` (
   `create_time` datetime(6) NOT NULL,
   `update_time` datetime(6) NOT NULL,
   PRIMARY KEY (`order_id`),
-  UNIQUE KEY `uk_merchant_out` (`merchant_id`,`out_trade_no`)
+  UNIQUE KEY `uk_merchant_out` (`merchant_id`,`out_trade_no`),
+  CONSTRAINT `fk_order_merchant` FOREIGN KEY (`merchant_id`) REFERENCES `t_merchant` (`merchant_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
@@ -50,7 +65,9 @@ CREATE TABLE `t_payment_transaction` (
   `create_time` datetime(6) NOT NULL,
   `update_time` datetime(6) NOT NULL,
   PRIMARY KEY (`transaction_id`),
-  UNIQUE KEY `uk_channel_txn` (`channel_transaction_id`)
+  UNIQUE KEY `uk_channel_txn` (`channel_transaction_id`),
+  KEY `idx_payment_merchant` (`merchant_id`),
+  CONSTRAINT `fk_payment_merchant` FOREIGN KEY (`merchant_id`) REFERENCES `t_merchant` (`merchant_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
