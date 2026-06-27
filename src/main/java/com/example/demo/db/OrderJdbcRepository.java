@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class OrderJdbcRepository {
@@ -44,6 +45,18 @@ public class OrderJdbcRepository {
                 Timestamp.valueOf(order.createTime()),
                 Timestamp.valueOf(order.updateTime())
         );
+    }
+
+    public Optional<OrderRecord> findByOrderId(String orderId) {
+        return jdbcTemplate.query(
+                """
+                        SELECT order_id, merchant_id, out_trade_no, amount, currency, status, create_time, update_time
+                        FROM t_order
+                        WHERE order_id = ?
+                        """,
+                ROW_MAPPER,
+                orderId
+        ).stream().findFirst();
     }
 
     public List<OrderRecord> findCreatedSince(LocalDateTime since) {
