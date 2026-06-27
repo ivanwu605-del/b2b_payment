@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: demo
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3306/b2b_payment?autoReconnect=true&useUnicode=true&useSSL=false&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Bangkok&useAffectedRows=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      database: ${REDIS_DATABASE:0}
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
