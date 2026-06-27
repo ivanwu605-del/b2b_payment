@@ -2,7 +2,7 @@
 
 ## Goal
 
-Add real HTTP REST APIs for creating orders and payments in the demo project.
+Add real HTTP REST APIs for creating orders and payments in the b2b_payment project.
 Both APIs persist data to MySQL and update the existing Redis sliding-window payment statistics.
 
 ## Scope
@@ -93,4 +93,4 @@ Add focused tests around the application service behavior:
 - Creating a payment for a missing order fails and does not write payment data.
 - Creating a payment with a merchant mismatch fails and does not write payment data.
 
-Existing Redis/MySQL demo tests remain valid and should continue to pass when the required local services are running.
+Existing Redis/MySQL b2b_payment tests remain valid and should continue to pass when the required local services are running.

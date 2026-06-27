@@ -10,8 +10,8 @@
     未支付占比 = (order_count - payment_count) / order_count
 
   参数：
-    KEYS[1]  订单 ZSET key（demo:b2b:order）
-    KEYS[2]  成功支付 ZSET key（demo:b2b:payment:success）
+    KEYS[1]  订单 ZSET key（b2b_payment:b2b:order）
+    KEYS[2]  成功支付 ZSET key（b2b_payment:b2b:payment:success）
     ARGV[1]  窗口起始时间戳（毫秒，含）
     ARGV[2]  窗口结束时间戳（毫秒，含，通常为 now）
     ARGV[3]  retention cutoff，清理 score <= 此值的数据（通常为 now - 12h）

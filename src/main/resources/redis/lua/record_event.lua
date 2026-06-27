@@ -10,7 +10,7 @@
     score  = 事件时间戳（毫秒），用于滑动窗口 ZCOUNT 统计
 
   参数：
-    KEYS[1]  目标 ZSET key（demo:b2b:order 或 demo:b2b:payment:success）
+    KEYS[1]  目标 ZSET key（b2b_payment:b2b:order 或 b2b_payment:b2b:payment:success）
     ARGV[1]  member，业务唯一 ID
     ARGV[2]  score，事件时间戳（毫秒）
     ARGV[3]  retention cutoff，清理 score <= 此值的数据（通常为 now - 12h）

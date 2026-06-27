@@ -13,26 +13,26 @@
 ## File Structure
 
 - Modify `pom.xml`: add `spring-boot-starter-web`.
-- Modify `src/main/java/com/example/demo/db/OrderJdbcRepository.java`: add `findByOrderId(String orderId)`.
-- Create `src/main/java/com/example/demo/api/CreateOrderRequest.java`: order create payload.
-- Create `src/main/java/com/example/demo/api/CreatePaymentRequest.java`: payment create payload.
-- Create `src/main/java/com/example/demo/api/OrderController.java`: `POST /orders`.
-- Create `src/main/java/com/example/demo/api/PaymentController.java`: `POST /payments`.
-- Create `src/main/java/com/example/demo/api/ApiErrorResponse.java`: JSON error body.
-- Create `src/main/java/com/example/demo/api/ApiExceptionHandler.java`: maps app exceptions to HTTP.
-- Create `src/main/java/com/example/demo/order/OrderApplicationService.java`: create order behavior.
-- Create `src/main/java/com/example/demo/payment/PaymentApplicationService.java`: create payment behavior.
-- Create `src/main/java/com/example/demo/payment/OrderNotFoundException.java`: missing order error.
-- Create `src/main/java/com/example/demo/payment/MerchantMismatchException.java`: merchant mismatch error.
-- Create `src/test/java/com/example/demo/order/OrderApplicationServiceTest.java`: order service behavior.
-- Create `src/test/java/com/example/demo/payment/PaymentApplicationServiceTest.java`: payment service behavior.
+- Modify `src/main/java/com/example/b2bpayment/db/OrderJdbcRepository.java`: add `findByOrderId(String orderId)`.
+- Create `src/main/java/com/example/b2bpayment/api/CreateOrderRequest.java`: order create payload.
+- Create `src/main/java/com/example/b2bpayment/api/CreatePaymentRequest.java`: payment create payload.
+- Create `src/main/java/com/example/b2bpayment/api/OrderController.java`: `POST /orders`.
+- Create `src/main/java/com/example/b2bpayment/api/PaymentController.java`: `POST /payments`.
+- Create `src/main/java/com/example/b2bpayment/api/ApiErrorResponse.java`: JSON error body.
+- Create `src/main/java/com/example/b2bpayment/api/ApiExceptionHandler.java`: maps app exceptions to HTTP.
+- Create `src/main/java/com/example/b2bpayment/order/OrderApplicationService.java`: create order behavior.
+- Create `src/main/java/com/example/b2bpayment/payment/PaymentApplicationService.java`: create payment behavior.
+- Create `src/main/java/com/example/b2bpayment/payment/OrderNotFoundException.java`: missing order error.
+- Create `src/main/java/com/example/b2bpayment/payment/MerchantMismatchException.java`: merchant mismatch error.
+- Create `src/test/java/com/example/b2bpayment/order/OrderApplicationServiceTest.java`: order service behavior.
+- Create `src/test/java/com/example/b2bpayment/payment/PaymentApplicationServiceTest.java`: payment service behavior.
 
 ### Task 1: Order Creation Service
 
 **Files:**
-- Create: `src/main/java/com/example/demo/api/CreateOrderRequest.java`
-- Create: `src/main/java/com/example/demo/order/OrderApplicationService.java`
-- Test: `src/test/java/com/example/demo/order/OrderApplicationServiceTest.java`
+- Create: `src/main/java/com/example/b2bpayment/api/CreateOrderRequest.java`
+- Create: `src/main/java/com/example/b2bpayment/order/OrderApplicationService.java`
+- Test: `src/test/java/com/example/b2bpayment/order/OrderApplicationServiceTest.java`
 
 - [ ] **Step 1: Write the failing test**
 
@@ -75,12 +75,12 @@ Expected: PASS.
 ### Task 2: Payment Creation Service
 
 **Files:**
-- Modify: `src/main/java/com/example/demo/db/OrderJdbcRepository.java`
-- Create: `src/main/java/com/example/demo/api/CreatePaymentRequest.java`
-- Create: `src/main/java/com/example/demo/payment/PaymentApplicationService.java`
-- Create: `src/main/java/com/example/demo/payment/OrderNotFoundException.java`
-- Create: `src/main/java/com/example/demo/payment/MerchantMismatchException.java`
-- Test: `src/test/java/com/example/demo/payment/PaymentApplicationServiceTest.java`
+- Modify: `src/main/java/com/example/b2bpayment/db/OrderJdbcRepository.java`
+- Create: `src/main/java/com/example/b2bpayment/api/CreatePaymentRequest.java`
+- Create: `src/main/java/com/example/b2bpayment/payment/PaymentApplicationService.java`
+- Create: `src/main/java/com/example/b2bpayment/payment/OrderNotFoundException.java`
+- Create: `src/main/java/com/example/b2bpayment/payment/MerchantMismatchException.java`
+- Test: `src/test/java/com/example/b2bpayment/payment/PaymentApplicationServiceTest.java`
 
 - [ ] **Step 1: Write failing tests**
 
@@ -141,10 +141,10 @@ Expected: PASS.
 
 **Files:**
 - Modify: `pom.xml`
-- Create: `src/main/java/com/example/demo/api/OrderController.java`
-- Create: `src/main/java/com/example/demo/api/PaymentController.java`
-- Create: `src/main/java/com/example/demo/api/ApiErrorResponse.java`
-- Create: `src/main/java/com/example/demo/api/ApiExceptionHandler.java`
+- Create: `src/main/java/com/example/b2bpayment/api/OrderController.java`
+- Create: `src/main/java/com/example/b2bpayment/api/PaymentController.java`
+- Create: `src/main/java/com/example/b2bpayment/api/ApiErrorResponse.java`
+- Create: `src/main/java/com/example/b2bpayment/api/ApiExceptionHandler.java`
 
 - [ ] **Step 1: Add web starter**
 
