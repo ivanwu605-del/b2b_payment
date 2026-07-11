@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class B2bPaymentApplication {
-
+    //启动
     public static void main(String[] args) {
         SpringApplication.run(B2bPaymentApplication.class, args);
     }
